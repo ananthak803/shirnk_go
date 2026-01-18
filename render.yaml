@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shrink-api
+    runtime: go
+    region: oregon
+    plan: free
+    buildCommand: cd backend && go build -o app .
+    startCommand: cd backend && ./app
+    envVars:
+      - key: MONGODB_URI
+        scope: build,runtime
+      - key: PORT
+        value: "8080"
